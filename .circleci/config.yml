@@ -18,6 +18,10 @@ jobs:
         - run:
             name: Printing some stuff
             command: echo "Hello World hehe XD"
+        - run:
+            name: Run all Apex tests
+            command: sfdx force:apex:test:run
+
   # Runs jobs in a particular order 
 workflows:
     basic-test:
