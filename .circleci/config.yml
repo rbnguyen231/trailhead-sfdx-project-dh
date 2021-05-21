@@ -22,7 +22,7 @@ jobs:
             command: echo "Hello World hehe XD"
         - run:
             name: Run all Apex tests
-            command: sfdx force:apex:test:run -u $DEFAULT_USERNAME
+            command: sfdx force:apex:test:report-u $DEFAULT_USERNAME
 
   # Runs jobs in a particular order 
 workflows:
