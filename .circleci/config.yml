@@ -1,7 +1,7 @@
 version: 2.1
-  orbs:
+orbs:
     apex: circleci/salesforce-apex@1.0.1
-  jobs:
+jobs:
     auth-install:
       docker:
       # Has node-js pre-installed and allows us to install Node version of Salesforce CLI without needing to install Node and npm
@@ -15,11 +15,11 @@ version: 2.1
         - run:
             name: Run your SFDX commands here
             command: sfdx force:auth:list 
-
+        - run:
             name: Printing some stuff
             command: echo "Hello World hehe XD"
   # Runs jobs in a particular order 
-  workflows:
+workflows:
     basic-test:
       jobs:
         - auth-install
