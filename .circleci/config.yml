@@ -6,12 +6,14 @@ jobs:
       docker:
       # Has node-js pre-installed and allows us to install Node version of Salesforce CLI without needing to install Node and npm
         - image: cimg/node:14.5
+      environment:
+        DEFAULT_USERNAME: raymond.nguyen@brave-badger-sf5hrf.com
       steps:
         # Fetches source code from the repository (typically first step)
         - checkout
         # Orb command supplied by apex orb (installs latest stand-alone version of CLI)
         - apex/setup:
-           defaultusername: raymond.nguyen@brave-badger-sf5hrf.com
+           defaultusername: $DEFAULT_USERNAME
         - run:
             name: Run your SFDX commands here
             command: sfdx force:auth:list 
@@ -20,7 +22,7 @@ jobs:
             command: echo "Hello World hehe XD"
         - run:
             name: Run all Apex tests
-            command: sfdx force:apex:test:run
+            command: sfdx force:apex:test:run -u $DEFAULT_USERNAME
 
   # Runs jobs in a particular order 
 workflows:
